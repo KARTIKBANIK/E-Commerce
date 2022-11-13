@@ -221,36 +221,39 @@ class _HomeState extends State<Home> {
                       ),
                     );
                   },
-                  child: Card(
-                    elevation: 5,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        AspectRatio(
-                          aspectRatio: 2,
-                          child: Container(
-                            child: Image.network(
-                              _products[index]["product-img"][0],
-                              fit: BoxFit.fitHeight,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Card(
+                      elevation: 5,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          AspectRatio(
+                            aspectRatio: 2,
+                            child: Container(
+                              child: Image.network(
+                                _products[index]["product-img"][0],
+                                fit: BoxFit.fitHeight,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Text(
-                          "${_products[index]["product-name"]}",
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
+                          SizedBox(
+                            height: 10.h,
                           ),
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Text(
-                            "Price: ${_products[index]["product-price"].toString()}"),
-                      ],
+                          Text(
+                            "${_products[index]["product-name"]}",
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Text(
+                              "Price: ${_products[index]["product-price"].toString()}"),
+                        ],
+                      ),
                     ),
                   ),
                 );

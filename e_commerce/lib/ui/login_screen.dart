@@ -95,12 +95,16 @@ class _LoginScreenState extends State<LoginScreen> {
                               height: 48.h,
                               width: 41.w,
                               decoration: BoxDecoration(
-                                  color: AppColors.deep_orange,
-                                  borderRadius: BorderRadius.circular(12.r)),
+                                border: Border.all(
+                                  width: 2,
+                                  color: Colors.black,
+                                ),
+                                borderRadius: BorderRadius.circular(9),
+                              ),
                               child: Center(
                                 child: Icon(
                                   Icons.email_outlined,
-                                  color: Colors.white,
+                                  color: Colors.black,
                                   size: 20.w,
                                 ),
                               ),
@@ -136,12 +140,16 @@ class _LoginScreenState extends State<LoginScreen> {
                               height: 48.h,
                               width: 41.w,
                               decoration: BoxDecoration(
-                                  color: AppColors.deep_orange,
-                                  borderRadius: BorderRadius.circular(12.r)),
+                                border: Border.all(
+                                  width: 2,
+                                  color: Colors.black,
+                                ),
+                                borderRadius: BorderRadius.circular(9),
+                              ),
                               child: Center(
                                 child: Icon(
                                   Icons.lock_outline,
-                                  color: Colors.white,
+                                  color: Colors.black,
                                   size: 20.w,
                                 ),
                               ),

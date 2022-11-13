@@ -24,35 +24,38 @@ class _BottomNavState extends State<BottomNav> {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.black,
-        // unselectedItemColor: Colors.grey,
+        unselectedItemColor: Colors.grey,
         items: [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
             ),
             label: 'Home',
-            backgroundColor: Colors.grey,
+            //backgroundColor: Colors.grey,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.favorite_outline,
+              color: Colors.black,
             ),
             label: 'Favourite',
-            backgroundColor: Colors.grey,
+            // backgroundColor: Colors.grey,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.shopping_cart,
+              color: Colors.black,
             ),
             label: 'Cart',
-            backgroundColor: Colors.grey,
+            // backgroundColor: Colors.grey,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
+              color: Colors.black,
             ),
             label: 'Profile',
-            backgroundColor: Colors.grey,
+            // backgroundColor: Colors.grey,
           ),
         ],
         onTap: (index) {

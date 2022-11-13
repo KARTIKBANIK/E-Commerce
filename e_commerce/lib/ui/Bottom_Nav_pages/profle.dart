@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_commerce/ui/bottom_nav.dart';
+import 'package:e_commerce/widgets/custombutton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +30,11 @@ class _ProfileState extends State<Profile> {
         TextFormField(
           controller: _ageController = TextEditingController(text: data['age']),
         ),
-        ElevatedButton(onPressed: () => updateData(), child: Text("Update"))
+        // ElevatedButton(onPressed: () => updateData(), child: Text("Update"))
+
+        customButton("Update", () {
+          updateData();
+        })
       ],
     );
   }

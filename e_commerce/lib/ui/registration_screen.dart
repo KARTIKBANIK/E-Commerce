@@ -1,6 +1,7 @@
 import 'package:e_commerce/const/app_colors.dart';
 import 'package:e_commerce/ui/login_screen.dart';
 import 'package:e_commerce/ui/user_form.dart';
+import 'package:e_commerce/widgets/custom_btn.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -89,12 +90,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 height: 48.h,
                                 width: 41.w,
                                 decoration: BoxDecoration(
-                                    color: AppColors.deep_orange,
-                                    borderRadius: BorderRadius.circular(12.r)),
+                                  border: Border.all(
+                                    width: 2,
+                                    color: Colors.black,
+                                  ),
+                                  borderRadius: BorderRadius.circular(9),
+                                ),
                                 child: Center(
                                   child: Icon(
                                     Icons.email_outlined,
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     size: 20.w,
                                   ),
                                 ),
@@ -135,12 +140,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 height: 48.h,
                                 width: 41.w,
                                 decoration: BoxDecoration(
-                                    color: AppColors.deep_orange,
-                                    borderRadius: BorderRadius.circular(12.r)),
+                                  border: Border.all(
+                                    width: 2,
+                                    color: Colors.black,
+                                  ),
+                                  borderRadius: BorderRadius.circular(9),
+                                ),
                                 child: Center(
                                   child: Icon(
                                     Icons.lock_outline,
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     size: 20.w,
                                   ),
                                 ),
@@ -200,23 +209,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           ),
                           // elevated button
                           SizedBox(
-                            width: 1.sw,
-                            height: 56.h,
-                            child: ElevatedButton(
-                              onPressed: () {
+                              width: 1.sw,
+                              height: 56.h,
+                              child: customButton("Continue", () {
                                 signUp();
-                              },
-                              child: Text(
-                                "Continue",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 18.sp),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                primary: AppColors.deep_orange,
-                                elevation: 3,
-                              ),
-                            ),
-                          ),
+                              })),
+
                           SizedBox(
                             height: 20.h,
                           ),
