@@ -140,11 +140,14 @@ class _HomeState extends State<Home> {
                   .map(
                     (item) => Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: NetworkImage(item),
-                            fit: BoxFit.fitWidth,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(item),
+                              fit: BoxFit.fitWidth,
+                            ),
                           ),
                         ),
                       ),

@@ -1,9 +1,13 @@
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:e_commerce/const/app_colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ProductDetails extends StatefulWidget {
   var _product;
@@ -15,6 +19,22 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails> {
   var _dotPosition = 0;
+  Future addToCard() async {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    var currentUser = _auth.currentUser;
+    CollectionReference _collectionRef =
+        FirebaseFirestore.instance.collection("users-card-items");
+    return _collectionRef
+        .doc(currentUser!.email)
+        .collection("items")
+        .doc()
+        .set({
+      "name": widget._product["product-name"],
+      "price": widget._product["product-price"],
+      "image": widget._product["product-img"],
+    }).then((value) => Fluttertoast.showToast(msg: "Added Successfully"));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -142,7 +162,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                 width: 1.sw,
                 height: 56.h,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    addToCard();
+                  },
                   child: Text(
                     "Add to cart",
                     style: TextStyle(color: Colors.white, fontSize: 18.sp),
