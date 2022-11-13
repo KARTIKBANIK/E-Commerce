@@ -30,8 +30,6 @@ class _ProfileState extends State<Profile> {
         TextFormField(
           controller: _ageController = TextEditingController(text: data['age']),
         ),
-        // ElevatedButton(onPressed: () => updateData(), child: Text("Update"))
-
         customButton("Update", () {
           updateData();
         })

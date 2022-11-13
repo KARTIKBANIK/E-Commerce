@@ -80,7 +80,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 fontWeight: FontWeight.bold,
                                 color: AppColors.deep_orange),
                           ),
-
                           SizedBox(
                             height: 20.h,
                           ),
@@ -203,18 +202,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               ),
                             ],
                           ),
-
                           SizedBox(
                             height: 50.h,
                           ),
-                          // elevated button
                           SizedBox(
                               width: 1.sw,
                               height: 56.h,
                               child: customButton("Continue", () {
                                 signUp();
                               })),
-
                           SizedBox(
                             height: 20.h,
                           ),
