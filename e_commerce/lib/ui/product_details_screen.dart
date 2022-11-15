@@ -36,6 +36,22 @@ class _ProductDetailsState extends State<ProductDetails> {
     }).then((value) => Fluttertoast.showToast(msg: "Added Successfully"));
   }
 
+  Future addToFavourite() async {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    var currentUser = _auth.currentUser;
+    CollectionReference _collectionRef =
+        FirebaseFirestore.instance.collection("users-favourite-items");
+    return _collectionRef
+        .doc(currentUser!.email)
+        .collection("items")
+        .doc()
+        .set({
+      "name": widget._product["product-name"],
+      "price": widget._product["product-price"],
+      "image": widget._product["product-img"],
+    }).then((value) => Fluttertoast.showToast(msg: "Added to favourite"));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,19 +73,39 @@ class _ProductDetailsState extends State<ProductDetails> {
           ),
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: CircleAvatar(
-              backgroundColor: AppColors.deep_orange,
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(
-                    Icons.favorite,
-                    color: Colors.white,
-                  )),
-            ),
+          StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection("users-favourite-items")
+                .doc(FirebaseAuth.instance.currentUser!.email)
+                .collection("items")
+                .where("name", isEqualTo: widget._product['product-name'])
+                .snapshots(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.data == null) {
+                return Text("");
+              }
+              return Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: CircleAvatar(
+                  backgroundColor: AppColors.deep_orange,
+                  child: IconButton(
+                      onPressed: () {
+                        snapshot.data.docs.length == 0
+                            ? addToFavourite()
+                            : Fluttertoast.showToast(msg: "Already Added");
+                      },
+                      icon: snapshot.data.docs.length == 0
+                          ? Icon(
+                              Icons.favorite_outline,
+                              color: Colors.white,
+                            )
+                          : Icon(
+                              Icons.favorite,
+                              color: Colors.white,
+                            )),
+                ),
+              );
+            },
           ),
         ],
       ),
